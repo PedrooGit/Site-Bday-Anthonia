@@ -1,128 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Minha Artista Favorita ❤️</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Anthonia ❤️</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 </head>
+
 <body>
 
-    <header>
-        <h1>Feliz Aniversário, minha Artista! 🎨</h1>
-        <p class="subtitulo">Celebrando você e a sua arte de fazer a vida mais bonita.</p>
-    </header>
+<div id="loading">
 
-    <div class="painel-contadores">
-        <div class="card-contador">
-            <h3>Sua existência no mundo:</h3>
-            <div class="valores-contador">
-                <div class="unidade"><span class="numero" id="anos-vida">17</span><span class="legenda">Anos</span></div>
-                <div class="unidade"><span class="numero" id="dias-vida">0</span><span class="legenda">Dias</span></div>
-                <div class="unidade"><span class="numero" id="horas-vida">0</span><span class="legenda">Horas</span></div>
-            </div>
-        </div>
+<h1>❤️</h1>
 
-        <div class="card-contador namoro">
-            <h3>Nosso tempo lado a lado:</h3>
-            <div class="valores-contador">
-                <div class="unidade"><span class="numero" id="tempo-namoro-dias">0</span><span class="legenda">Dias</span></div>
-                <div class="unidade"><span class="numero" id="tempo-namoro-horas">0</span><span class="legenda">Horas</span></div>
-                <div class="unidade"><span class="numero" id="tempo-namoro-min">0</span><span class="legenda">Minutos</span></div>
-            </div>
-        </div>
-    </div>
+<p>Carregando uma surpresa...</p>
 
-    <h2 class="galeria-titulo">Galeria: Pedaços de Nós 🖼️</h2>
-    <div class="exposicao">
-        
-        <div class="moldura">
-            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=400" alt="Minha Artista">
-            <div class="legenda-arte">"A artista mais linda de todo o mundo."</div>
-        </div>
+</div>
 
-        <div class="moldura">
-            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=400" alt="Nós Juntos">
-            <div class="legenda-arte">"O melhor traço da minha vida é você."</div>
-        </div>
+<canvas id="hearts"></canvas>
 
-        <div class="moldura">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400" alt="Nosso Sorriso">
-            <div class="legenda-arte">"O meu lugar favorito no universo inteiro."</div>
-        </div>
+<section class="hero">
 
-        <div class="moldura">
-            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=400" alt="Colorindo a vida">
-            <div class="legenda-arte">"Obrigado por colorir todos os meus dias."</div>
-        </div>
+<h2>Para a garota mais incrível...</h2>
 
-    </div>
+<h1>Anthonia</h1>
 
-    <div class="carta-livro">
-        <p>Meu amor,</p>
-        <p>Se a nossa história fosse um livro, eu leria cada página infinitas vezes sem cansar. Se a nossa vida fosse uma tela em branco, eu passaria todos os dias misturando as cores mais vivas e intensas para desenhar o seu sorriso.</p>
-        <p>Você, que ama ler sobre o mundo e pintar suas próprias realidades, trouxe muito mais cor para a minha vida. Ver você completar 17 anos é ter a certeza de que o futuro guarda as telas mais lindas para você pintar.</p>
-        <p>Estarei sempre aqui na primeira fileira da sua exposição de vida, te aplaudindo e te amando em cada novo traço.</p>
-        <div class="assinatura">Com todo o meu amor, ❤️</div>
-    </div>
+<p>Feliz Aniversário ❤️</p>
 
-    <script>
-        // Defina as datas exatas
-        const nascimento = new Date('2009-07-17T00:00:00');
-        const inicioNamoro = new Date('2026-07-21T00:00:00'); // Data de início do namoro
+<a href="#inicio" class="btn">Começar</a>
 
-        function calcularTudo() {
-            const agora = new Date();
+</section>
 
-            // 1. Cálculo do tempo de vida dela
-            const diferencaVidaMs = agora - nascimento;
-            const anosVida = agora.getFullYear() - nascimento.getFullYear();
-            const diasVida = Math.floor(diferencaVidaMs / (1000 * 60 * 60 * 24));
-            const horasVida = Math.floor((diferencaVidaMs / (1000 * 60 * 60)) % 24);
+<section id="inicio">
 
-            document.getElementById('anos-vida').innerText = anosVida;
-            document.getElementById('dias-vida').innerText = diasVida;
-            document.getElementById('horas-vida').innerText = horasVida;
+<h2>17 anos de luz ✨</h2>
 
-            // 2. Cálculo do tempo de namoro
-            const diferencaNamoroMs = agora - inicioNamoro;
-            
-            if (diferencaNamoroMs < 0) {
-                // Se o site for aberto antes do dia 21/07, mostra contagem regressiva para o namoro começar!
-                const diasFaltam = Math.ceil(Math.abs(diferencaNamoroMs) / (1000 * 60 * 60 * 24));
-                document.getElementById('tempo-namoro-dias').innerText = diasFaltam;
-                document.getElementById('tempo-namoro-horas').innerText = "0";
-                document.getElementById('tempo-namoro-min').innerText = "0";
-                document.querySelector('.card-contador.namoro h3').innerText = "Contagem para o início do Namoro: ";
-            } else {
-                const diasNamoro = Math.floor(diferencaNamoroMs / (1000 * 60 * 60 * 24));
-                const horasNamoro = Math.floor((diferencaNamoroMs / (1000 * 60 * 60)) % 24);
-                const minNamoro = Math.floor((diferencaNamoroMs / (1000 * 60)) % 60);
+<img src="img/foto1.jpg">
 
-                document.getElementById('tempo-namoro-dias').innerText = diasNamoro;
-                document.getElementById('tempo-namoro-horas').innerText = horasNamoro;
-                document.getElementById('tempo-namoro-min').innerText = minNamoro;
-            }
-        }
+<p>
+Hoje o mundo comemora o nascimento da garota que tornou
+meus dias mais felizes.
+</p>
 
-        // Criador de corações flutuantes de fundo
-        function criarCoracao() {
-            const coracao = document.createElement('div');
-            coracao.classList.add('coracao');
-            coracao.innerText = Math.random() > 0.5 ? '❤️' : '🎨';
-            coracao.style.left = Math.random() * 100 + 'vw';
-            coracao.style.animationDuration = Math.random() * 3 + 4 + 's'; 
-            coracao.style.fontSize = Math.random() * 15 + 15 + 'px'; 
-            document.body.appendChild(coracao);
+</section>
 
-            setTimeout(() => {
-                coracao.remove();
-            }, 6000);
-        }
+<section class="galeria">
 
-        setInterval(calcularTudo, 1000);
-        setInterval(criarCoracao, 1500);
-        calcularTudo();
-    </script>
+<h2>Nossos Momentos</h2>
+
+<div class="fotos">
+
+<img src="img/foto1.jpg">
+
+<img src="img/foto2.jpg">
+
+<img src="img/foto3.jpg">
+
+<img src="img/foto4.jpg">
+
+<img src="img/foto5.jpg">
+
+</div>
+
+</section>
+
+<section class="carta">
+
+<h2>Uma Carta Para Você</h2>
+
+<p id="typing"></p>
+
+</section>
+
+<section class="contador">
+
+<h2>Você acabou de completar</h2>
+
+<div class="idade">
+
+<span>17</span>
+
+<p>Anos</p>
+
+</div>
+
+<div id="tempo"></div>
+
+</section>
+
+<section class="amor">
+
+<h2>10 coisas que amo em você ❤️</h2>
+
+<div class="cards">
+
+<div>❤️ Seu sorriso</div>
+
+<div>❤️ Seu abraço</div>
+
+<div>❤️ Seu olhar</div>
+
+<div>❤️ Sua voz</div>
+
+<div>❤️ Seu carinho</div>
+
+<div>❤️ Seu humor</div>
+
+<div>❤️ Seu jeitinho</div>
+
+<div>❤️ Sua companhia</div>
+
+<div>❤️ Seu coração</div>
+
+<div>❤️ Tudo em você.</div>
+
+</div>
+
+</section>
+
+<section class="final">
+
+<h1>Eu escolheria você...</h1>
+
+<h2>Em qualquer vida.</h2>
+
+<p>
+
+Feliz aniversário,
+
+<strong>Anthonia ❤️</strong>
+
+</p>
+
+<p>
+
+Com todo meu amor,
+
+<strong>Bart.</strong>
+
+</p>
+
+<button id="surpresa">
+
+Clique aqui ❤️
+
+</button>
+
+</section>
+
+<audio id="music" controls>
+
+<source src="audio/musica.mp3" type="audio/mpeg">
+
+</audio>
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
