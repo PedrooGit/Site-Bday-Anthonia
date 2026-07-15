@@ -1,170 +1,326 @@
 <!DOCTYPE html>
+
+<!--
+===========================================================
+    PROJETO: Feliz Aniversário Anthonia ❤️
+    Autor: euzinho
+    Objetivo:
+    Criar uma página interativa e personalizada para
+    comemorar os 17 anos da Anthonia.
+===========================================================
+-->
+
 <html lang="pt-BR">
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ==========================================================
+         CONFIGURAÇÕES BÁSICAS DA PÁGINA
+    =========================================================== -->
 
-<title>Para Anthonia ❤️</title>
+    <!-- Define a codificação de caracteres -->
+    <meta charset="UTF-8">
 
-<link rel="stylesheet" href="style.css">
+    <!-- Responsividade para celulares -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Título exibido na aba do navegador -->
+    <title>Para Anthonia ❤️</title>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Arquivo principal de estilos -->
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- ==========================================================
+         FONTES DO GOOGLE
+    =========================================================== -->
+
+    <!-- Pré-conexão para carregar as fontes mais rapidamente -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Fonte principal e fonte cursiva -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+
+    <!-- ==========================================================
+         BIBLIOTECAS EXTERNAS
+    =========================================================== -->
+
+    <!-- Biblioteca responsável pelos confetes -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 </head>
 
 <body>
 
-<div id="loading">
+    <!-- ==========================================================
+         TELA DE CARREGAMENTO
+    =========================================================== -->
 
-<h1>❤️</h1>
+    <!--
+        Exibida durante alguns segundos enquanto o
+        JavaScript prepara toda a experiência.
+    -->
 
-<p>Carregando uma surpresa...</p>
+    <div id="loading">
 
-</div>
+        <h1>❤️</h1>
 
-<canvas id="hearts"></canvas>
+        <p>Carregando uma surpresa...</p>
 
-<section class="hero">
+    </div>
 
-<h2>Para a garota mais incrível...</h2>
 
-<h1>Anthonia</h1>
+    <!-- ==========================================================
+         CANVAS
+    =========================================================== -->
 
-<p>Feliz Aniversário ❤️</p>
+    <!--
+        Reservado para futuras animações utilizando Canvas.
+        Atualmente os corações são criados pelo JavaScript.
+    -->
 
-<a href="#inicio" class="btn">Começar</a>
+    <canvas id="hearts"></canvas>
 
-</section>
 
-<section id="inicio">
+    <!-- ==========================================================
+         HERO
+    =========================================================== -->
 
-<h2>17 anos de luz ✨</h2>
+    <!--
+        Primeira tela apresentada ao usuário.
 
-<img src="img/foto1.jpg">
+        Contém:
+        • Nome
+        • Mensagem principal
+        • Botão para iniciar a experiência
+    -->
 
-<p>
-Hoje o mundo comemora o nascimento da garota que tornou
-meus dias mais felizes.
-</p>
+    <section class="hero">
 
-</section>
+        <h2>Para a garota mais incrível...</h2>
 
-<section class="galeria">
+        <h1>Anthonia</h1>
 
-<h2>Nossos Momentos</h2>
+        <p>Feliz Aniversário ❤️</p>
 
-<div class="fotos">
+        <a href="#inicio" class="btn">
 
-<img src="img/foto1.jpg">
+            Começar
 
-<img src="img/foto2.jpg">
+        </a>
 
-<img src="img/foto3.jpg">
+    </section>
 
-<img src="img/foto4.jpg">
 
-<img src="img/foto5.jpg">
+    <!-- ==========================================================
+         INTRODUÇÃO
+    =========================================================== -->
 
-</div>
+    <!--
+        Pequena homenagem apresentando
+        o aniversário da Anthonia.
+    -->
 
-</section>
+    <section id="inicio">
 
-<section class="carta">
+        <h2>17 anos do meu amor</h2>
 
-<h2>Uma Carta Para Você</h2>
+        <img src="img/foto1.jpg" alt="Foto da Anthonia">
 
-<p id="typing"></p>
+        <p>
 
-</section>
+            Hoje o mundo comemora o nascimento da garota
+            que tornou meus dias mais felizes.
 
-<section class="contador">
+        </p>
 
-<h2>Você acabou de completar</h2>
+    </section>
 
-<div class="idade">
+    <!-- ==========================================================
+         CARTA
+    =========================================================== -->
 
-<span>17</span>
+    <!--
+        O conteúdo desta carta é escrito
+        automaticamente pelo JavaScript utilizando
+        efeito de máquina de escrever.
+    -->
 
-<p>Anos</p>
+    <section class="carta">
 
-</div>
+        <h2>Uma Cartinha Pra Plebi</h2>
 
-<div id="tempo"></div>
+        <p id="typing"></p>
 
-</section>
+    </section>
 
-<section class="amor">
 
-<h2>10 coisas que amo em você ❤️</h2>
 
-<div class="cards">
 
-<div>❤️ Seu sorriso</div>
 
-<div>❤️ Seu abraço</div>
+    <!-- ==========================================================
+         GALERIA DE FOTOS
+    =========================================================== -->
 
-<div>❤️ Seu olhar</div>
+    <!--
+        Local onde serão exibidas as fotos
+        do casal.
 
-<div>❤️ Sua voz</div>
+        O JavaScript permite ampliar cada foto.
+    -->
 
-<div>❤️ Seu carinho</div>
+    <section class="galeria">
 
-<div>❤️ Seu humor</div>
+        <h2>Fotinhos nossas</h2>
 
-<div>❤️ Seu jeitinho</div>
+        <div class="fotos">
 
-<div>❤️ Sua companhia</div>
+            <img src="img/foto1.jpg" alt="Foto 1">
 
-<div>❤️ Seu coração</div>
+            <img src="img/foto2.jpg" alt="Foto 2">
 
-<div>❤️ Tudo em você.</div>
+            <img src="img/foto3.jpg" alt="Foto 3">
 
-</div>
+            <img src="img/foto4.jpg" alt="Foto 4">
 
-</section>
+            <img src="img/foto5.jpg" alt="Foto 5">
 
-<section class="final">
+        </div>
 
-<h1>Eu escolheria você...</h1>
+    </section>
 
-<h2>Em qualquer vida.</h2>
 
-<p>
 
-Feliz aniversário,
 
-<strong>Anthonia ❤️</strong>
 
-</p>
+    <!-- ==========================================================
+         CONTADOR
+    =========================================================== -->
 
-<p>
+    <!--
+        Exibe a idade atual e o tempo
+        desde o nascimento da Anthonia.
 
-Com todo meu amor,
+        Atualizado automaticamente a cada segundo.
+    -->
 
-<strong>Bart.</strong>
+    <section class="contador">
 
-</p>
+        <h2>Você acabou de completar</h2>
 
-<button id="surpresa">
+        <div class="idade">
 
-Clique aqui ❤️
+            <span>17</span>
 
-</button>
+            <p>Anos</p>
 
-</section>
+        </div>
 
-<audio id="music" controls>
+        <div id="tempo"></div>
 
-<source src="audio/musica.mp3" type="audio/mpeg">
+    </section>
 
-</audio>
 
-<script src="script.js"></script>
+    <!-- ==========================================================
+         10 COISAS QUE AMO EM VOCÊ
+    =========================================================== -->
+
+    <!--
+        Cards destacando algumas das
+        qualidades da Anthonia.
+    -->
+
+    <section class="amor">
+
+        <h2>10 coisas que amo em você ❤️</h2>
+
+        <div class="cards">
+
+            <div> amo seus abracos quentinhos
+                <br>❤️ aki colocar as coisas e a descricao paj
+            </div>
+
+            <div>❤️ Seu abraço</div>
+
+            <div>❤️ Seu olhar</div>
+
+            <div>❤️ Sua voz</div>
+
+            <div>❤️ Seu carinho</div>
+
+            <div>❤️ Seu humor</div>
+
+            <div>❤️ Seu jeitinho</div>
+
+            <div>❤️ Sua companhia</div>
+
+            <div>❤️ Seu coração</div>
+
+            <div>❤️ Tudo em você.</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================================
+         ENCERRAMENTO
+    =========================================================== -->
+
+    <!--
+        Última tela da experiência.
+
+        O botão dispara uma surpresa criada
+        pelo JavaScript.
+    -->
+
+    <section class="final">
+
+        <h1>Eu escolheria você...</h1>
+
+        <h2>Em qualquer vida.</h2>
+
+        <p>
+
+            Feliz aniversário,
+
+            <strong>Anthonia </strong>
+
+        </p>
+
+        <p>
+
+            Com todo meu amor,
+
+            <strong>Pedro.</strong>
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- ==========================================================
+         JAVASCRIPT
+    =========================================================== -->
+
+    <!--
+        Arquivo responsável por:
+
+        • Loading
+        • Carta digitando
+        • Contador
+        • Galeria
+        • Confetes
+        • Corações
+        • Música
+        • Surpresa final
+    -->
+
+    <script src="script.js"></script>
 
 </body>
 

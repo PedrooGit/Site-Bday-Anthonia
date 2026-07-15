@@ -1,28 +1,47 @@
-/* =====================================
-   LOADING
-===================================== */
+/* ===========================================================
+   1. ELEMENTOS DA PÁGINA
+=========================================================== */
 
-window.addEventListener("load", () => {
+/*
+    Captura todos os elementos HTML que serão utilizados
+    durante a execução do site.
 
-    setTimeout(() => {
-        document.getElementById("loading").style.opacity = "0";
+    Dessa forma evitamos procurar o mesmo elemento várias
+    vezes com getElementById(), tornando o código mais limpo
+    e um pouco mais performático.
+*/
 
-        setTimeout(() => {
-            document.getElementById("loading").style.display = "none";
-        }, 800);
+const loading = document.getElementById("loading");
+const typing = document.getElementById("typing");
+const tempo = document.getElementById("tempo");
+const surpresaBtn = document.getElementById("surpresa");
+const music = document.getElementById("music");
 
-        chuvaConfete();
+/*
+    Lista de todas as seções da página.
+*/
 
-    }, 2500);
+const sections = document.querySelectorAll("section");
 
-});
+/*
+    Lista de todas as imagens da galeria.
+*/
+
+const fotos = document.querySelectorAll(".fotos img");
 
 
-/* =====================================
-   CARTA DIGITANDO
-===================================== */
+/* ===========================================================
+   2. CARTA DE ANIVERSÁRIO
+=========================================================== */
 
-const texto = `
+/*
+    Texto que será exibido através do efeito de
+    máquina de escrever.
+
+    Basta alterar este texto para modificar a carta.
+*/
+
+const carta = `
 
 Oi, meu amor...
 
@@ -32,193 +51,272 @@ Porque hoje comemoramos os seus 17 anos.
 
 Obrigado por existir.
 
-Obrigado por fazer meus dias mais felizes.
+Obrigado por iluminar meus dias.
 
-Obrigado por sempre estar ao meu lado.
+Obrigado por cada sorriso.
+
+Obrigado por cada abraço.
 
 Você mudou completamente a minha vida.
 
-Eu te amo mais do que qualquer texto poderia explicar.
+Espero que este seja apenas o primeiro de muitos aniversários que vamos comemorar juntos.
 
-Feliz aniversário, princesa.
+Eu te amo infinitamente.
 
 ❤️
 
 `;
 
-let i = 0;
 
-function escrever(){
+/* ===========================================================
+   3. INICIALIZAÇÃO DO SITE
+=========================================================== */
 
-    if(i < texto.length){
+/*
+    Quando toda a página terminar de carregar,
+    inicia todas as funcionalidades automaticamente.
+*/
 
-        document.getElementById("typing").innerHTML += texto.charAt(i);
+window.addEventListener("load", iniciarSite);
 
-        i++;
+/*
+    Função principal responsável por iniciar
+    todas as partes do projeto.
+*/
 
-        setTimeout(escrever,45);
+function iniciarSite() {
 
-    }
+    iniciarLoading();
+
+    iniciarObserver();
+
+    iniciarContador();
+
+    iniciarGaleria();
 
 }
 
-setTimeout(escrever,3500);
+
+/* ===========================================================
+   4. LOADING
+=========================================================== */
+
+/*
+    Exibe uma tela de carregamento por alguns segundos.
+
+    Após esse tempo:
+
+    • desaparece suavemente
+    • inicia a carta
+    • inicia a música
+    • dispara confetes
+*/
+
+function iniciarLoading() {
+
+    setTimeout(() => {
+
+        loading.style.transition = "1s";
+        loading.style.opacity = "0";
+
+        setTimeout(() => {
+
+            loading.remove();
+
+            iniciarCarta();
+
+            chuvaConfete();
+
+        }, 1000);
+
+    }, 2500);
+
+}
 
 
+/* ===========================================================
+   5. EFEITO MÁQUINA DE ESCREVER
+=========================================================== */
 
-/* =====================================
-   CONTADOR
-===================================== */
+/*
+    Escreve a carta letra por letra,
+    simulando uma máquina de escrever.
+*/
 
-const nascimento = new Date("2009-07-17");
+function iniciarCarta() {
 
-function atualizarTempo(){
+    let i = 0;
+
+    function escrever() {
+
+        if (i < carta.length) {
+
+            typing.textContent += carta.charAt(i);
+
+            i++;
+
+            setTimeout(escrever, 40);
+
+        }
+
+    }
+
+    escrever();
+
+}
+
+
+/* ===========================================================
+   6. CONTADOR DE TEMPO
+=========================================================== */
+
+/*
+    Data de nascimento utilizada para calcular
+    há quanto tempo a Anthonia nasceu.
+*/
+
+const nascimento = new Date("2009-07-17T00:00:00");
+
+/*
+    Inicia o contador.
+*/
+
+function iniciarContador() {
+
+    atualizarContador();
+
+    setInterval(atualizarContador, 1000);
+
+}
+
+/*
+    Atualiza dias, horas, minutos e segundos.
+*/
+
+function atualizarContador() {
 
     const agora = new Date();
 
-    const diff = agora - nascimento;
+    const diferenca = agora - nascimento;
 
-    const dias = Math.floor(diff / (1000*60*60*24));
+    const dias = Math.floor(diferenca / 86400000);
 
-    const horas = Math.floor(diff / (1000*60*60));
+    const horas = Math.floor(diferenca / 3600000);
 
-    const minutos = Math.floor(diff / (1000*60));
+    const minutos = Math.floor(diferenca / 60000);
 
-    document.getElementById("tempo").innerHTML=`
+    const segundos = Math.floor(diferenca / 1000);
 
-        <h3>${dias.toLocaleString()} dias</h3>
+    tempo.innerHTML = `
 
-        <h3>${horas.toLocaleString()} horas</h3>
+        <h3>🌎 ${dias.toLocaleString()} dias</h3>
 
-        <h3>${minutos.toLocaleString()} minutos</h3>
+        <h3>🕒 ${horas.toLocaleString()} horas</h3>
+
+        <h3>⏰ ${minutos.toLocaleString()} minutos</h3>
+
+        <h3>❤️ ${segundos.toLocaleString()} segundos</h3>
 
     `;
 
 }
 
-setInterval(atualizarTempo,1000);
 
-atualizarTempo();
+/* ===========================================================
+   7. ANIMAÇÃO DAS SEÇÕES
+=========================================================== */
+
+/*
+    Utiliza IntersectionObserver para detectar
+    quando uma seção entra na tela.
+
+    Quando isso acontece,
+    adiciona a classe "show",
+    permitindo que o CSS faça a animação.
+*/
+
+function iniciarObserver() {
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    }, {
+
+        threshold: .15
+
+    });
+
+    sections.forEach(sec => observer.observe(sec));
+
+}
 
 
 
-/* =====================================
-   CONFETE
-===================================== */
 
-function chuvaConfete(){
 
-confetti({
+/* ===========================================================
+   9. GALERIA
+=========================================================== */
 
-particleCount:180,
+/*
+    Permite ampliar apenas uma foto por vez.
 
-spread:160,
+    Ao clicar em outra foto,
+    a anterior volta ao tamanho normal.
+*/
 
-origin:{y:0.6}
+function iniciarGaleria() {
 
-});
+    fotos.forEach(foto => {
+
+        foto.addEventListener("click", () => {
+
+            fotos.forEach(f => {
+
+                f.classList.remove("zoom");
+
+            });
+
+            foto.classList.add("zoom");
+
+        });
+
+    });
 
 }
 
 
 
-/* =====================================
-   BOTÃO FINAL
-===================================== */
+/* ===========================================================
+   11. CONFETES
+=========================================================== */
 
-document.getElementById("surpresa").onclick=()=>{
+/*
+    Dispara uma animação de confetes.
 
-    chuvaConfete();
+    Utiliza a biblioteca Canvas Confetti.
+*/
 
-    alert("❤️ Eu te amo infinitamente, Anthonia ❤️");
+function chuvaConfete() {
 
-}
+    confetti({
 
+        particleCount: 180,
 
+        spread: 180,
 
-/* =====================================
-   CORAÇÕES CAINDO
-===================================== */
+        origin: { y: .6 }
 
-function criarCoracao(){
-
-    const heart=document.createElement("div");
-
-    heart.innerHTML="❤️";
-
-    heart.style.position="fixed";
-
-    heart.style.left=Math.random()*100+"vw";
-
-    heart.style.top="-50px";
-
-    heart.style.fontSize=(20+Math.random()*20)+"px";
-
-    heart.style.animation="cair "+(4+Math.random()*4)+"s linear";
-
-    heart.style.zIndex="999";
-
-    heart.style.pointerEvents="none";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },8000);
+    });
 
 }
 
-setInterval(criarCoracao,400);
-
-
-
-/* =====================================
-   ANIMAÇÃO SCROLL
-===================================== */
-
-const observer = new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity="1";
-
-entry.target.style.transform="translateY(0px)";
-
-}
-
-});
-
-});
-
-
-document.querySelectorAll("section").forEach(sec=>{
-
-sec.style.opacity="0";
-
-sec.style.transform="translateY(100px)";
-
-sec.style.transition="1s";
-
-observer.observe(sec);
-
-});
-
-
-
-/* =====================================
-   ZOOM NAS FOTOS
-===================================== */
-
-document.querySelectorAll(".fotos img").forEach(img=>{
-
-img.onclick=()=>{
-
-img.classList.toggle("zoom");
-
-}
-
-});

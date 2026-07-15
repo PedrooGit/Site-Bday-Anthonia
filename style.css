@@ -1,442 +1,645 @@
-/* ===========================
-   RESET
-=========================== */
+/* =====================================================
+   1. RESET E CONFIGURAÇÕES GERAIS
+===================================================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
+/*
+    Remove margens e paddings padrões do navegador,
+    aplica box-sizing para facilitar os cálculos de layout
+    e ativa o scroll suave entre âncoras.
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:linear-gradient(180deg,#080808,#170000,#2b0000,#080808);
-    color:white;
-    overflow-x:hidden;
-}
+/*
+    Variáveis globais utilizadas em todo o projeto.
+    Facilita alterar cores futuramente.
+*/
+:root {
 
-/* Barra de rolagem */
+    --background: #060606;
+    --background-dark: #110000;
+    --background-light: #1c0000;
 
-::-webkit-scrollbar{
-    width:8px;
-}
+    --primary: #ff2d55;
+    --primary-light: #ff456d;
 
-::-webkit-scrollbar-thumb{
-    background:#ff2d55;
-    border-radius:20px;
-}
-
-/* ===========================
-LOADING
-=========================== */
-
-#loading{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:black;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    z-index:999;
-}
-
-#loading h1{
-    font-size:70px;
-    animation:pulse 1.5s infinite;
-}
-
-#loading p{
-    margin-top:20px;
-    color:#ddd;
-}
-
-@keyframes pulse{
-
-0%{transform:scale(1);}
-50%{transform:scale(1.2);}
-100%{transform:scale(1);}
+    --white: #ffffff;
+    --text: #dddddd;
 
 }
 
-/* ===========================
-HERO
-=========================== */
+/*
+    Estilo geral da página.
+    Cria um fundo com degradês vermelhos para dar
+    sensação de profundidade.
+*/
+body {
 
-.hero{
+    font-family: "Poppins", sans-serif;
 
-height:100vh;
+    color: white;
 
-display:flex;
+    overflow-x: hidden;
 
-justify-content:center;
+    background:
 
-align-items:center;
+        radial-gradient(circle at top, #3a0000 0%, transparent 30%),
 
-flex-direction:column;
+        radial-gradient(circle at bottom, #2a0000 0%, transparent 25%),
 
-text-align:center;
+        linear-gradient(180deg,
 
-padding:20px;
+            var(--background),
 
-background:url("https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80");
+            var(--background-dark),
 
-background-size:cover;
+            var(--background-light),
 
-background-position:center;
-
-}
-
-.hero h2{
-
-font-weight:300;
-
-font-size:22px;
+            var(--background));
 
 }
 
-.hero h1{
+/* =====================================================
+   3. TELA DE CARREGAMENTO (LOADING)
+===================================================== */
 
-font-family:'Great Vibes',cursive;
+/*
+    Tela exibida enquanto o site é carregado.
+*/
+#loading {
 
-font-size:72px;
+    position: fixed;
 
-margin:20px 0;
+    inset: 0;
 
-color:#ff456d;
+    background: black;
 
-text-shadow:0 0 25px red;
+    display: flex;
 
-}
+    justify-content: center;
 
-.hero p{
+    align-items: center;
 
-font-size:22px;
+    flex-direction: column;
 
-margin-bottom:35px;
-
-}
-
-.btn{
-
-background:#ff2d55;
-
-padding:15px 35px;
-
-border-radius:40px;
-
-text-decoration:none;
-
-color:white;
-
-font-weight:bold;
-
-transition:.3s;
+    z-index: 999;
 
 }
 
-.btn:hover{
+/*
+    Ícone de coração do loading.
+*/
+#loading h1 {
 
-transform:scale(1.08);
+    font-size: 70px;
 
-background:#ff5577;
-
-}
-
-/* ===========================
-SEÇÕES
-=========================== */
-
-section{
-
-padding:80px 20px;
-
-text-align:center;
+    animation: pulse 1.5s infinite;
 
 }
 
-section h2{
+/*
+    Texto abaixo do coração.
+*/
+#loading p {
 
-font-size:35px;
+    margin-top: 20px;
 
-margin-bottom:30px;
-
-}
-
-/* ===========================
-IMAGEM
-=========================== */
-
-section img{
-
-width:90%;
-
-max-width:350px;
-
-border-radius:20px;
-
-margin:20px auto;
-
-display:block;
-
-box-shadow:0 0 30px rgba(255,0,80,.5);
+    color: #ddd;
 
 }
 
-/* ===========================
-GALERIA
-=========================== */
-
-.fotos{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:15px;
-
-}
-
-.fotos img{
-
-transition:.4s;
-
-cursor:pointer;
-
-}
-
-.fotos img:hover{
-
-transform:scale(1.08);
-
-}
-
-/* ===========================
-CARTA
-=========================== */
-
-.carta{
-
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(15px);
-
-margin:40px 20px;
-
-border-radius:25px;
-
-padding:40px;
-
-}
-
-#typing{
-
-font-size:20px;
-
-line-height:40px;
-
-}
-
-/* ===========================
-CARDS
-=========================== */
-
-.cards{
-
-display:grid;
-
-grid-template-columns:1fr;
-
-gap:18px;
-
-margin-top:30px;
-
-}
-
-.cards div{
-
-background:rgba(255,255,255,.08);
-
-padding:20px;
-
-border-radius:18px;
-
-transition:.3s;
-
-font-size:18px;
-
-}
-
-.cards div:hover{
-
-transform:translateY(-6px);
-
-background:#ff2d55;
-
-}
-
-/* ===========================
-CONTADOR
-=========================== */
-
-.idade span{
-
-font-size:100px;
-
-font-weight:bold;
-
-color:#ff2d55;
-
-}
-
-.idade p{
-
-font-size:25px;
-
-margin-bottom:30px;
-
-}
-
-/* ===========================
-FINAL
-=========================== */
-
-.final{
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-flex-direction:column;
-
-}
-
-.final h1{
-
-font-family:'Great Vibes';
-
-font-size:65px;
-
-color:#ff456d;
-
-}
-
-.final h2{
-
-margin:20px;
-
-}
-
-.final button{
-
-margin-top:30px;
-
-padding:18px 40px;
-
-font-size:20px;
-
-background:#ff2d55;
-
-border:none;
-
-border-radius:40px;
-
-color:white;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-.final button:hover{
-
-transform:scale(1.1);
-
-}
-
-/* ===========================
-MÚSICA
-=========================== */
-
-audio{
-
-position:fixed;
-
-bottom:15px;
-
-right:15px;
-
-width:260px;
-
-opacity:.7;
-
-}
-
-/* ===========================
-RESPONSIVO
-=========================== */
-
-@media(max-width:600px){
-
-.hero h1{
-
-font-size:55px;
-
-}
-
-section h2{
-
-font-size:28px;
-
-}
-
-.final h1{
-
-font-size:50px;
-
-}
-
-.cards{
-
-gap:12px;
-
-}
-
-}
-
-
-/* =============================
-   CORAÇÕES
-============================= */
-
-@keyframes cair {
-
-    0%{
-        transform:translateY(-100px) rotate(0deg);
-        opacity:1;
+/*
+    Animação de pulsação.
+*/
+@keyframes pulse {
+
+    0% {
+        transform: scale(1);
     }
 
-    100%{
-        transform:translateY(120vh) rotate(360deg);
-        opacity:0;
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
     }
 
 }
 
-/* =============================
-   ZOOM DAS FOTOS
-============================= */
+/* =====================================================
+   4. HERO (PRIMEIRA TELA)
+===================================================== */
 
-.zoom{
-    transform:scale(1.8)!important;
-    z-index:999;
-    position:relative;
-    transition:.4s;
+/*
+    Primeira seção apresentada ao usuário.
+*/
+.hero {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 20px;
+
+    background: url("sua-imagem.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+/*
+    Camada escura sobre a imagem
+    para facilitar a leitura dos textos.
+*/
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, .45);
+
+    backdrop-filter: blur(2px);
+
+}
+
+/*
+    Mantém o conteúdo acima da camada escura.
+*/
+.hero>* {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+/* =====================================================
+   5. BOTÕES
+===================================================== */
+
+/*
+    Botão principal utilizado na Hero e
+    em outras partes do site.
+
+    Possui:
+    - gradiente
+    - sombra
+    - cantos arredondados
+    - animação suave ao passar o mouse
+*/
+
+.btn {
+
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 16px 40px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(45deg,
+            var(--primary),
+            var(--primary-light));
+
+    color: white;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 10px 30px rgba(255, 45, 85, .35);
+
+    transition: .35s;
+
+}
+
+/*
+    Efeito quando o usuário passa o mouse.
+*/
+
+.btn:hover {
+
+    transform:
+        translateY(-5px) scale(1.05);
+
+    box-shadow:
+        0 20px 40px rgba(255, 45, 85, .55);
+
+}
+
+/* =====================================================
+   6. SEÇÕES
+===================================================== */
+
+/*
+    Todas as seções utilizam o mesmo padrão.
+
+    Cada seção ocupa praticamente uma tela inteira,
+    mantendo um visual moderno e organizado.
+*/
+
+section {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    padding: 100px 10%;
+
+    text-align: center;
+
+}
+
+/*
+    Título principal das seções.
+*/
+
+section h2 {
+
+    font-size: clamp(32px, 5vw, 55px);
+
+    line-height: 1.3;
+
+    margin-bottom: 30px;
+
+}
+
+/* =====================================================
+   7. IMAGENS
+===================================================== */
+
+/*
+    Configuração padrão para imagens únicas.
+*/
+
+section img {
+
+    width: 90%;
+
+    max-width: 350px;
+
+    display: block;
+
+    margin: 20px auto;
+
+    border-radius: 20px;
+
+    object-fit: cover;
+
+    box-shadow:
+
+        0 0 30px rgba(255, 0, 80, .5);
+
+}
+
+/* =====================================================
+   8. GALERIA
+===================================================== */
+
+/*
+    Organiza as fotos em duas colunas.
+*/
+
+.fotos {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+}
+
+/*
+    Configuração individual das imagens.
+*/
+
+.fotos img {
+
+    width: 100%;
+
+    aspect-ratio: 1/1;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    transition: .5s;
+
+}
+
+/*
+    Animação ao passar o mouse.
+*/
+
+.fotos img:hover {
+
+    transform:
+
+        translateY(-8px) scale(1.05);
+
+    box-shadow:
+
+        0 20px 40px rgba(255, 45, 85, .4);
+
+}
+
+/* =====================================================
+   9. CARTA
+===================================================== */
+
+/*
+    Caixa onde será exibida a carta.
+
+    A ideia é lembrar uma folha de papel,
+    destacando o texto em relação ao fundo.
+*/
+
+.carta {
+
+    background: #fffdf7;
+
+    color: #2d2d2d;
+
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 50px;
+
+    border-radius: 20px;
+
+    box-shadow:
+
+        0 25px 60px rgba(0, 0, 0, .35);
+
+}
+
+/*
+    Texto digitado pelo JavaScript.
+*/
+
+#typing {
+
+    font-size: 20px;
+
+    line-height: 40px;
+
+    text-align: left;
+
+    white-space: pre-line;
+
+}
+
+/* =====================================================
+   10. CARDS
+===================================================== */
+
+/*
+    Grade utilizada para listar
+    "10 coisas que amo em você".
+*/
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+
+    margin-top: 30px;
+
+}
+
+/*
+    Card individual.
+*/
+
+.cards div {
+
+    background: rgba(255, 255, 255, .06);
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    backdrop-filter: blur(15px);
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    font-size: 18px;
+
+    transition: .3s;
+
+    box-shadow:
+
+        0 15px 40px rgba(0, 0, 0, .25);
+
+}
+
+/*
+    Destaque ao passar o mouse.
+*/
+
+.cards div:hover {
+
+    transform:
+
+        translateY(-6px);
+
+    background: var(--primary);
+
+}
+
+/* =====================================================
+   11. CONTADOR
+===================================================== */
+
+/*
+    Número da idade.
+*/
+
+.idade span {
+
+    font-size: 100px;
+
+    font-weight: bold;
+
+    color: var(--primary);
+
+}
+
+/*
+    Texto "anos".
+*/
+
+.idade p {
+
+    font-size: 25px;
+
+    margin-bottom: 30px;
+
+}
+
+/*
+    Informações calculadas pelo JavaScript.
+*/
+
+#tempo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+}
+
+/* =====================================================
+   12. TELA FINAL
+===================================================== */
+
+/*
+    Última tela do site.
+*/
+
+.final {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+}
+
+/*
+    Frase principal.
+*/
+
+.final h1 {
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: 65px;
+
+    color: var(--primary-light);
+
+}
+
+/*
+    Subtítulo.
+*/
+
+.final h2 {
+
+    margin: 20px 0;
+
+}
+
+/*
+    Botão da surpresa final.
+*/
+
+.final button {
+
+    margin-top: 35px;
+
+    padding: 18px 40px;
+
+    border: none;
+
+    border-radius: 40px;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: .35s;
+
+}
+
+/*
+    Animação do botão.
+*/
+
+.final button:hover {
+
+    transform:
+
+        translateY(-5px) scale(1.05);
+
+}
+
+#mensagem-final {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, .96);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    z-index: 99999;
+
+    padding: 30px;
+
 }
