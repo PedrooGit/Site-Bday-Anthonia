@@ -1,0 +1,237 @@
+:root {
+    --cor-fundo: #fcf8f2; /* Tom creme, imitando papel ou tela de pintura */
+    --vermelho-amor: #a82c2c; /* Vermelho escuro/elegante */
+    --vermelho-claro: #f5e6e6;
+    --grafite: #2d2d2d;
+    --dourado-detalhe: #d4af37;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Georgia', serif; /* Estética de romance clássico */
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--grafite);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* Efeito de Pincelada e Título */
+header {
+    margin: 30px 0;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    color: var(--vermelho-amor);
+    font-size: 2.2rem;
+    font-style: italic;
+    margin-bottom: 8px;
+    position: relative;
+    display: inline-block;
+}
+
+header h1::after {
+    content: '';
+    display: block;
+    width: 110%;
+    height: 8px;
+    background: var(--vermelho-amor);
+    opacity: 0.15;
+    position: absolute;
+    bottom: 2px;
+    left: -5%;
+    border-radius: 50%;
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Painel de Contadores */
+.painel-contadores {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 30px;
+}
+
+.card-contador {
+    background: #ffffff;
+    border: 1px solid #eadecc;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(168, 44, 44, 0.05);
+    text-align: center;
+    position: relative;
+}
+
+.card-contador::before {
+    content: '🎨';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--cor-fundo);
+    padding: 0 8px;
+    font-size: 0.9rem;
+}
+
+.card-contador.namoro::before {
+    content: '📖';
+}
+
+.card-contador h3 {
+    font-size: 1.05rem;
+    color: #555;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.valores-contador {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.unidade {
+    display: flex;
+    flex-direction: column;
+}
+
+.numero {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--vermelho-amor);
+}
+
+.legenda {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: lowercase;
+}
+
+/* Galeria de Fotos - Exposição de Arte */
+.galeria-titulo {
+    color: var(--vermelho-amor);
+    font-size: 1.4rem;
+    margin: 25px 0 15px 0;
+    text-align: center;
+}
+
+.exposicao {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 40px;
+}
+
+/* Moldura Estilo Quadro */
+.moldura {
+    background: #ffffff;
+    padding: 15px 15px 35px 15px;
+    border-radius: 2px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 8px solid #3d2314; /* Moldura simulando madeira rústica */
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Efeito de leve rotação para parecer quadros reais pendurados */
+.moldura:nth-child(odd) {
+    transform: rotate(-1.5deg);
+}
+
+.moldura:nth-child(even) {
+    transform: rotate(1.5deg);
+}
+
+.moldura:hover {
+    transform: scale(1.03) rotate(0deg);
+    z-index: 10;
+}
+
+.moldura img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover; /* Faz a foto se adaptar sem distorcer */
+    border: 1px solid #ddd;
+}
+
+.moldura .legenda-arte {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #555;
+}
+
+/* Carta Estilo Página de Livro Antigo */
+.carta-livro {
+    background: #fdfcf7;
+    border: 1px solid #e3dac9;
+    border-radius: 4px;
+    padding: 30px 25px;
+    max-width: 450px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    line-height: 1.8;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.carta-livro::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 15px;
+    width: 1px;
+    background: rgba(168, 44, 44, 0.15); /* Margem vertical de folha pautada */
+}
+
+.carta-livro p {
+    text-indent: 20px;
+    font-size: 1rem;
+    color: #333;
+    text-align: justify;
+}
+
+.assinatura {
+    margin-top: 30px;
+    text-align: right;
+    font-weight: bold;
+    color: var(--vermelho-amor);
+    font-size: 1.1rem;
+}
+
+/* Elementos flutuantes de fundo */
+.coracao {
+    position: fixed;
+    color: rgba(168, 44, 44, 0.12);
+    font-size: 1.5rem;
+    pointer-events: none;
+    z-index: -1;
+    animation: flutuar 6s infinite linear;
+}
+
+@keyframes flutuar {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
